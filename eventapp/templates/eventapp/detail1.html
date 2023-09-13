@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Detail Page</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <section id="events">
+        
+        <div class="box1">
+        <h1 class="heading">{{event.event_title}}</h1>
+        <p>Date:{{event.date}} </p>
+        <p>Venue:{{event.location}}</p>
+        <p>Description:{{event.description}}</p>
+        <br>
+        
+        <div class="box-card">
+        <form action="{% url 'eventdetail' event.pk %}" method='POST'>
+            
+            <h2>Apply for this Event</h2>
+            {% csrf_token %}
+            {{form.as_p}}
+            <br>
+            <input type="submit" id="submit" value="Apply">
+            
+
+        </form>
+        </div>
+    </div>
+    </section>
+    <footer>
+        <h4> &copy 2023 Event Registration System</h4>
+    </footer>
+    
+</body>
+</html>
